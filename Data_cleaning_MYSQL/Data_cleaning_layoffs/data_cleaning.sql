@@ -239,6 +239,17 @@ WHERE total_laid_off IS NULL
 ALTER TABLE layoffs_staging2
 DROP COLUMN `row_num`; 
 
+-- Cambiamos los tipos de dato de as siguientes columnas
+DESCRIBE layoffs_staging2;
+
+-- Cambiamos total_laid_off a SMALLINT
+ALTER TABLE layoffs_staging2
+MODIFY COLUMN total_laid_off SMALLINT;
+
+-- Cambiamos total_laid_off a DECIMAL
+ALTER TABLE layoffs_staging2
+MODIFY COLUMN percentage_laid_off DECIMAL(4,3);
+
 -- Y finalmente la tabla quedó lista
 SELECT *
 FROM layoffs_staging2;
